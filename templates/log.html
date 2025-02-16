@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лог действий</title>
+</head>
+<body>
+    <h1>Лог действий</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>ФИО</th>
+            <th>Действие</th>
+            <th>Дата</th>
+            <th>Оценка</th>
+            <th>Примечание</th> <!-- Новый столбец для примечаний -->
+            <th>Редактирование</th> <!-- Столбец для действий -->
+        </tr>
+        {% for action in actions %}
+        <tr>
+            <td>{{ action.id }}</td>
+            <td>{{ action.full_name }}</td>
+            <td>{{ action.action }}</td>
+            <td>{{ action.date }}</td>
+            <td>{{ action.rating }}</td>
+            <td>{{ action.note if action.note is not none else '' }}</td> <!-- Отображение примечания или пустой строки -->
+            <td>
+                <a href="{{ url_for('edit', id=action.id) }}">Редактировать</a> <!-- Ссылка на редактирование -->
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Назад</a>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета</title>
+</head>
+<body>
+    <h1>Заполните анкету</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST">
+        <label for="full_name">ФИО:</label>
+        <input type="text" name="full_name" required><br><br>
+
+        <label for="action">Действие:</label>
+        <select name="action" required>
+            <option value="Работа с ПО">Работа с ПО</option>
+            <option value="Ведение документации">Ведение документации</option>
+            <option value="Заполнение конспекта">Заполнение конспекта</option>
+            <option value="Иное действие">Иное действие</option>
+        </select><br><br>
+
+        <label for="rating">Оценка (1-10):</label>
+        <input type="number" name="rating" min="1" max="10" required><br><br>
+
+        <button type="submit">Отправить</button>
+    </form>
+    
+    <a href="/log">Посмотреть лог действий</a>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать запись</title>
+</head>
+<body>
+    <h1>Редактировать запись</h1>
+    <form method="POST">
+        <label for="full_name">ФИО:</label>
+        <input type="text" name="full_name" value="{{ action.full_name }}" disabled><br><br>
+
+        <label for="action">Действие:</label>
+        <input type="text" name="action" value="{{ action.action }}" disabled><br><br>
+
+        <label for="date">Дата:</label>
+        <input type="text" name="date" value="{{ action.date }}" disabled><br><br>
+
+        <label for="rating">Оценка (1-10):</label>
+        <input type="number" name="rating" min="1" max="10" value="{{ action.rating }}" required><br><br>
+
+        <label for="note">Примечание:</label>
+        <textarea name="note" rows="4" cols="50">{{ action.note }}</textarea><br><br> <!-- Поле для примечания -->
+
+        <button type="submit">Сохранить изменения</button>
+    </form>
+    
+    <a href="/log">Назад</a>
+</body>
+</html>
